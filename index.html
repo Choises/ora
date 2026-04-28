@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>𝕸𝖚𝖘𝖎𝖈💕𝕮𝖍𝖔𝖎𝖈𝖊𝖘</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: transparent; /* Sfondo trasparente */
+            font-family: 'Arial', sans-serif;
+        }
+
+        .orologio {
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            position: relative;
+            background-image: url('https://xatimg.com/image/WzDGfIoYo042.jpg');
+            background-size: cover;
+            background-position: center;
+            
+            /* --- EFFETTO LED ROSSO --- */
+            border: 4px solid #00f2ff;
+            box-shadow: 
+                0 0 15px #FF0000,            /* Glow esterno morbido */
+                0 0 30px #808000,            /* Glow esterno ampio */
+                inset 0 0 15px #FFFF00,      /* Glow interno */
+                0 10px 40px rgba(0,0,0,0.8); /* Ombra per profondità */
+        }
+
+        /* Overlay scuro per far risaltare il LED e le lancette */
+        .orologio::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.25);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .numero {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            /* I numeri ora hanno un leggero riflesso azzurro */
+            text-shadow: 0 0 10px rgba(0, 242, 255, 0.8), 2px 2px 4px rgba(0,0,0,0.9);
+            z-index: 2;
+            padding: 15px;
+            box-sizing: border-box;
+        }
+
+        .punto-centrale {
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            background-color: #808000; /* Centro coordinato col LED */
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            box-shadow: 0 0 10px #00f2ff;
+        }
+
+        .lancetta {
+            --rotazione: 0deg;
+            position: absolute;
+            bottom: 50%;
+            left: 50%;
+            transform-origin: bottom;
+            transform: translateX(-50%) rotate(var(--rotazione));
+            z-index: 5;
+            border-radius: 10px;
+        }
+
+        .lancetta.ore { width: 8px; height: 25%; background-color:#3BB9FF ; }
+        .lancetta.minuti { width: 5px; height: 38%; background-color: #FF0000; }
+        .lancetta.secondi { width: 2px; height: 42%; background-color: #FFFF00; }
+
+    </style>
+</head>
+<body>
+
+    <div class="orologio" id="orologio">
+        <div class="punto-centrale"></div>
+        <div class="lancetta ore" data-lancetta-ore></div>
+        <div class="lancetta minuti" data-lancetta-minuti></div>
+        <div class="lancetta secondi" data-lancetta-secondi></div>
+    </div>
+
+    <script>
+        const orologio = document.getElementById('orologio');
+
+        // Generazione Numeri
+        for (let i = 1; i <= 12; i++) {
+            const numDiv = document.createElement('div');
+            numDiv.className = 'numero';
+            numDiv.style.transform = `rotate(${i * 30}deg)`;
+            
+            const span = document.createElement('span');
+            span.textContent = i;
+            span.style.display = 'block';
+            span.style.transform = `rotate(-${i * 30}deg)`;
+            
+            numDiv.appendChild(span);
+            orologio.appendChild(numDiv);
+        }
+
+        const lancettaOre = document.querySelector('[data-lancetta-ore]');
+        const lancettaMinuti = document.querySelector('[data-lancetta-minuti]');
+        const lancettaSecondi = document.querySelector('[data-lancetta-secondi]');
+
+        function impostaOrologio() {
+            const dataAttuale = new Date();
+            const secondiRatio = dataAttuale.getSeconds() / 60;
+            const minutiRatio = (secondiRatio + dataAttuale.getMinutes()) / 60;
+            const oreRatio = (minutiRatio + (dataAttuale.getHours() % 12)) / 12;
+
+            setRotazione(lancettaSecondi, secondiRatio);
+            setRotazione(lancettaMinuti, minutiRatio);
+            setRotazione(lancettaOre, oreRatio);
+        }
+
+        function setRotazione(elemento, ratio) {
+            elemento.style.setProperty('--rotazione', ratio * 360 + 'deg');
+        }
+
+        setInterval(impostaOrologio, 1000);
+        impostaOrologio();
+    </script><script>
+$(document).ready(function() {
+    try {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         $('.garfieldpt').ripples({
+            resolution: 512,
+            dropRadius: 20, //px
+            perturbance: 0.04,
+        });
+        $('main').ripples({
+            resolution: 6,
+            dropRadius: 12, //px
+            perturbance: 0.04,
+            //interactive: false
+        });
+    }
+    catch (e) {
+        $('.error').show().text(e);
+    }
+
+    $('.js-ripples-disable').on('click', function() {
+                                                                                                                                                                                                                                               $('.garfieldpt, main').ripples('destroy');
+        $(this).hide();
+    });
+
+    $('.js-ripples-play').on('click', function() {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                $('.garfieldpt, main').ripples('play');
+    });
+
+    $('.js-ripples-pause').on('click', function() {
+        $('.garfieldpt, main').ripples('pause');
+    });
+
+    // Automatic drops
+    setInterval(function() {
+        var $el = $('main');
+        var x = Math.random() * $el.outerWidth();
+        var y = Math.random() * $el.outerHeight();
+        var dropRadius = 20;
+        var strength = 0.04 + Math.random() * 0.04;
+
+        $el.ripples('drop', x, y, dropRadius, strength);
+    }, 400);
+});
+</script>
+<script>
+  function disableselect(e){
+     return false
+  }
+
+  function reEnable(){
+     return true
+  }
+
+//if IE4+
+   document.oncontextmenu=new Function ("return false")
+//if NS6
+  if (window.sidebar){
+     document.onmousedown=disableselect
+     document.onclick=reEnable
+}
+ </script>
+</body>
+</html>
